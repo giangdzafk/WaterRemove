@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">WaterRemove</string>
+
+    <!--  Chung  -->
+    <string name="action_next">Next</string>
+    <string name="action_get_started">Get Started</string>
+    <string name="settings">Settings</string>
+    <!--  Language  -->
+    <string name="language_title">Language</string>
+    <string name="toast_select_language">Please select your language</string>
+    <!--  Onboarding 1  -->
+    <string name="onb1_title">What problem does your speaker have?</string>
+    <string name="onb1_subtitle">You can choose more than one</string>
+    <string name="issue_water">Water in speaker</string>
+    <string name="issue_dust">Dust in speaker</string>
+    <string name="issue_low_sound">Low or muffled sound</string>
+    <string name="issue_test">Test speaker quality</string>
+    <string name="toast_select_first">You need to select first</string>
+    <!--  Onboarding 2, 3  -->
+    <string name="onb2_title">Remove water in seconds</string>
+    <string name="onb2_desc">Special sound waves push water out of your phone speaker.</string>
+    <string name="onb3_title">Clean dust and test sound</string>
+    <string name="onb3_desc">Shake off dust, then check low, mid, high tones and left/right speakers.</string>
+    <!--  Welcome  -->
+    <string name="welcome_title">Welcome to WaterRemove</string>
+    <string name="welcome_desc">Keep your phone speaker clean and loud.</string>
+    <!--  Home  -->
+    <string name="tab_cleaner">Cleaner</string>
+    <string name="tab_tips">Tips</string>
+    <string name="home_title">Speaker Cleaner</string>
+    <string name="feature_water">Water Removal</string>
+    <string name="feature_water_desc">Push water out of the speaker</string>
+    <string name="feature_dust">Dust Removal</string>
+    <string name="feature_dust_desc">Shake off dust and dirt</string>
+    <string name="feature_sound">Test Sound</string>
+    <string name="feature_sound_desc">Check frequency and stereo</string>
+    <!--  Tips  -->
+    <string name="tip1_title">Turn the volume up to max</string>
+    <string name="tip1_desc">Higher volume makes stronger vibration, so water comes out faster.</string>
+    <string name="tip2_title">Face the speaker down</string>
+    <string name="tip2_desc">Let gravity help water drip out while cleaning.</string>
+    <string name="tip3_title">Don\'t use a hair dryer</string>
+    <string name="tip3_desc">Hot air can damage the speaker. Use sound cleaning instead.</string>
+</resources>

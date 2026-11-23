@@ -22,11 +22,6 @@ object Routes {
     const val HOME = "home"
 }
 
-/**
- * Lần đầu: Splash > Language > Onb1 > Onb2 > (native_full_1) > Onb3 > (native_full_2) > Welcome > Home
- * Các lần sau: Splash > Home
- * (inter_splash / native_full sẽ chèn vào khi gắn AdMob)
- */
 @Composable
 fun AppNavHost(navController: NavHostController = rememberNavController()) {
     NavHost(navController = navController, startDestination = Routes.SPLASH) {

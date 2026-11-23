@@ -54,10 +54,10 @@ fun LanguageScreen(
         onNextClick = {
             val selected = state.selected
             if (selected == null) {
-                context.showToast(selectFirstMessage) // "Please select your language"
+                context.showToast(selectFirstMessage)
             } else {
-                onNext()                      // 1. điều hướng sang Onboarding TRƯỚC
-                applyAppLocale(selected.code) // 2. rồi mới đổi ngôn ngữ → Activity tạo lại, vẫn ở Onboarding
+                onNext()
+                applyAppLocale(selected.code)
             }
         },
     )

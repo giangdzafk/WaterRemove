@@ -26,10 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.waterremove.R
 
-/**
- * Màn Home TẠM THỜI để luồng mở app chạy được tới cuối.
- * Các tính năng Water/Dust/Sound sẽ làm ở bước tiếp theo.
- */
+
 @Composable
 fun HomeScreen() {
     var tab by rememberSaveable { mutableIntStateOf(0) }

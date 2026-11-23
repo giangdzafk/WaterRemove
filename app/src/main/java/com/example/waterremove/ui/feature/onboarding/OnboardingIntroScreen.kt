@@ -60,7 +60,7 @@ fun OnboardingIntroScreen(page: Int, onNext: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            // Ảnh tạm — thay bằng Image(painterResource(R.drawable.onb_2), null) khi có asset
+
             Box(
                 modifier = Modifier
                     .size(220.dp)

@@ -37,7 +37,6 @@ import com.example.waterremove.R
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
-// TODO: khi gắn AdMob, thanh loading chạy tới khi inter_splash load xong (tối đa 6s).
 private const val SPLASH_DURATION_MS = 3_000
 
 @Composable

@@ -1,44 +1,148 @@
 <resources>
-    <string name="app_name">WaterRemove</string>
+    <string name="app_name">Water Remove</string>
 
     <!--  Chung  -->
     <string name="action_next">Next</string>
     <string name="action_get_started">Get Started</string>
-    <string name="settings">Settings</string>
+    <string name="action_back">Back</string>
+    <string name="action_close">Close</string>
+    <string name="action_guide">Guide</string>
+    <string name="settings">Setting</string>
+    <string name="tap_to_try">Tap to try</string>
+
     <!--  Language  -->
     <string name="language_title">Language</string>
     <string name="toast_select_language">Please select your language</string>
+
     <!--  Onboarding 1  -->
-    <string name="onb1_title">What problem does your speaker have?</string>
-    <string name="onb1_subtitle">You can choose more than one</string>
-    <string name="issue_water">Water in speaker</string>
-    <string name="issue_dust">Dust in speaker</string>
-    <string name="issue_low_sound">Low or muffled sound</string>
-    <string name="issue_test">Test speaker quality</string>
+    <string name="onb1_title">What do you want to clean?</string>
+    <string name="onb1_subtitle">You can choose more than one option</string>
+    <string name="target_water">Water</string>
+    <string name="target_dust">Dust</string>
+    <string name="target_pollen">Pollen</string>
+    <string name="target_sand">Sand</string>
     <string name="toast_select_first">You need to select first</string>
+
     <!--  Onboarding 2, 3  -->
-    <string name="onb2_title">Remove water in seconds</string>
-    <string name="onb2_desc">Special sound waves push water out of your phone speaker.</string>
-    <string name="onb3_title">Clean dust and test sound</string>
-    <string name="onb3_desc">Shake off dust, then check low, mid, high tones and left/right speakers.</string>
+    <string name="onb2_title">Water Remover</string>
+    <string name="onb2_desc">Blast out trapped water in your phone and restore clear sound instantly</string>
+    <string name="onb3_title">Dust Remover</string>
+    <string name="onb3_desc">Clear away stubborn dust that was hidden in every corner of your phone</string>
+
     <!--  Welcome  -->
-    <string name="welcome_title">Welcome to WaterRemove</string>
-    <string name="welcome_desc">Keep your phone speaker clean and loud.</string>
+    <string name="welcome_title">WELCOME!</string>
+    <string name="welcome_desc">Let\'s explore amazing features and clean up your phone!</string>
+
     <!--  Home  -->
     <string name="tab_cleaner">Cleaner</string>
     <string name="tab_tips">Tips</string>
     <string name="home_title">Speaker Cleaner</string>
     <string name="feature_water">Water Removal</string>
-    <string name="feature_water_desc">Push water out of the speaker</string>
     <string name="feature_dust">Dust Removal</string>
-    <string name="feature_dust_desc">Shake off dust and dirt</string>
-    <string name="feature_sound">Test Sound</string>
-    <string name="feature_sound_desc">Check frequency and stereo</string>
-    <!--  Tips  -->
-    <string name="tip1_title">Turn the volume up to max</string>
-    <string name="tip1_desc">Higher volume makes stronger vibration, so water comes out faster.</string>
-    <string name="tip2_title">Face the speaker down</string>
-    <string name="tip2_desc">Let gravity help water drip out while cleaning.</string>
-    <string name="tip3_title">Don\'t use a hair dryer</string>
-    <string name="tip3_desc">Hot air can damage the speaker. Use sound cleaning instead.</string>
+    <string name="feature_sound">Test sound</string>
+    <string name="start_cleaning">Start cleaning</string>
+
+    <!--  Water / Dust remover  -->
+    <string name="water_remover">Water Remover</string>
+    <string name="dust_remover">Dust Remover</string>
+    <string name="mode_auto">Auto</string>
+    <string name="mode_manual">Manual</string>
+    <string name="action_start">Start</string>
+    <string name="water_remove_title">Water remove</string>
+    <string name="water_remove_desc">Remove water droplets or moisture from the speaker to prevent corrosion</string>
+    <string name="dust_remove_title">Dust remove</string>
+    <string name="dust_remove_desc">Remove hidden dust from the speaker to prevent corrosion</string>
+    <string name="state_of_wetness">State of wetness</string>
+    <string name="wet_slightly">Slightly wet</string>
+    <string name="wet_heavily">Heavily wet</string>
+    <string name="wet_strong">Strong remove</string>
+    <string name="drag_to_adjust">Drag to adjust.</string>
+    <string name="stop_cleaning">Stop cleaning</string>
+    <string name="hz_value">%1$d Hz</string>
+    <string name="click_to_see_guide">Click here to see guide</string>
+    <string name="toast_volume_off">You must always keep the volume on</string>
+    <string name="tip_volume_low">Turn the volume up to max for the most effective cleaning</string>
+
+    <!--  Cleaning / Result  -->
+    <string name="clean_speaker">Clean speaker</string>
+    <string name="do_not_exit">Do not exit this screen while your speaker is being cleaned</string>
+    <string name="percent_value">%1$d%%</string>
+    <string name="cleaning">Cleaning…</string>
+    <string name="stop_dialog_title">Stop cleaning?</string>
+    <string name="stop_dialog_desc">Your phone is being cleaned, do you want to stop the process?</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_continue">Continue</string>
+    <string name="result_incomplete_title">Clean Speaker</string>
+    <string name="result_incomplete_desc">The cleaning process was being interrupted. You should clean your phone again for better result.</string>
+    <string name="result_complete_title">Your phone is clean!</string>
+    <string name="result_complete_desc">Cleaning process is 100% completed. Re-clean your phone for the best result.</string>
+    <string name="percent_completed">%1$d%% Completed</string>
+    <string name="clean_again">Clean again</string>
+    <string name="test_speaker">Test speaker</string>
+    <string name="home">Home</string>
+
+    <!--  Tutorial  -->
+    <string name="tutorial">Tutorial</string>
+    <string name="tut_step1_title">Sound will play automatically</string>
+    <string name="tut_step1_desc">On pressing Start, sound will automatically play on maximum to clean your phone</string>
+    <string name="tut_step2_title">Place your phone upside down</string>
+    <string name="tut_step2_desc">To get the best result, lay your phone upside down on a flat surface</string>
+    <string name="tut_sound_title">How to Run the Frequency Test?</string>
+    <string name="tut_sound_desc">Listen to the different sound ranges to check your speaker health.</string>
+    <string name="tut_sound_1_title">Turn it up:</string>
+    <string name="tut_sound_1_desc">Set your phone volume to maximum.</string>
+    <string name="tut_sound_2_title">Play tones:</string>
+    <string name="tut_sound_2_desc">Press \"Play\" on the Low, Mid, and High sections one by one.</string>
+    <string name="tut_sound_3_title">Listen closely:</string>
+    <string name="tut_sound_3_desc">The sound should be clear and steady.</string>
+    <string name="tut_sound_4_title">Check quality:</string>
+    <string name="tut_sound_4_desc">Note if any tones sound distorted, crackly, or muffled.</string>
+
+    <!--  Sound test  -->
+    <string name="sound_test">Sound Test</string>
+    <string name="tab_frequency">Frequency</string>
+    <string name="tab_stereo">Stereo</string>
+    <string name="freq_hint_title">Press Play to test frequency response</string>
+    <string name="freq_hint_desc">Listen to the tone from low to high. Are they clear and powerful, or do they sound distorted?</string>
+    <string name="band_low">Low</string>
+    <string name="band_mid">Mid</string>
+    <string name="band_high">High</string>
+    <string name="action_play">Play</string>
+    <string name="stereo_hint_title">Press Play to test stereo</string>
+    <string name="stereo_hint_desc">Left and right sounds should be distinct. Ensure both speakers are equally loud and clear.</string>
+    <string name="speaker_left">Left: %1$s</string>
+    <string name="speaker_right">Right: %1$s</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="start_testing">Start testing</string>
+
+    <!--  Setting  -->
+    <string name="rate_this_app">Rate this app</string>
+    <string name="share_us">Share Us</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="share_text">Clean water and dust out of your phone speaker with %1$s: %2$s</string>
+
+    <!--  Rate / Feedback  -->
+    <string name="rate_title">Enjoying the app?</string>
+    <string name="rate_desc_5">Your 5-star rating inspires us to do even better. Thank you!</string>
+    <string name="rate_desc_4">We will work harder to make the experience more satisfying for you</string>
+    <string name="rate_desc_3">We will try our best to improve</string>
+    <string name="rate_desc_2">Oh no! We will try our best to improve</string>
+    <string name="rate_desc_1">Ouch! We need to work so much harder</string>
+    <string name="rate_now">Rate now</string>
+    <string name="feedback">Feedback</string>
+    <string name="feedback_desc">We\'re sorry for the trouble.\nTell us what happened so we can improve!</string>
+    <string name="feedback_hint">Enter your feedback</string>
+    <string name="action_send">Send</string>
+    <string name="toast_feedback_thanks">Thank you for your feedback!</string>
+    <string name="Topic_1">\nIt’s an almost universal frustration. You’re on a call in a slightly noisy environment, and you can barely hear the other person. Or perhaps you’re trying to watch a video, and the audio sounds thin, tinny, and quiet, even at maximum volume.\n\nYou look at the bottom of your phone, and there it is: a grey, fuzzy wall of pocket lint, dust, and crumbs compacted into the tiny speaker holes.\n\nThe temptation is immediate and overwhelming. You need something thin, sharp, and rigid to dig that gunk out. You reach for a wooden toothpick, a sewing needle, a straightened paperclip, or the SIM ejector tool. It seems like the obvious, satisfying solution to physically scoop out the blockage.\n\nPlease stop immediately. Putting any solid object into your speaker holes is the single fastest way to turn a temporary cleaning problem into permanent hardware damage.\n\nTo understand why, you need to know what’s happening just millimeters behind that metal grille. Your phone speaker isn\'t just a hole where sound comes out; it’s a highly sophisticated, incredibly miniaturized piece of audio engineering. The critical component is a diaphragm—a membrane often thinner than a human hair—that vibrates rapidly to create sound waves.\n\nWhen you insert a toothpick or needle, you are operating blind in a microscopic space. You are millimeters away from puncturing or tearing that delicate membrane. If you tear the diaphragm, there is no software fix. There is no app that can repair torn hardware. The result is permanent audio distortion (a blown-out, crackling sound) or complete silence. The only fix is an expensive physical repair or a new phone.\n</string>
+    <string name="title_topic_1">The High Cost of a Toothpick: Why You Must Stop Poking Your Phone</string>
+    <string name="title_topic_2">\"Water-Resistant\" is Not Waterproof: Understanding the Eject Feature</string>
+    <string name="topic_2">\nModern smartphones boast impressive IP ratings (like IP68), leading many users to believe their devices are invulnerable to water. While it’s true that phones are tougher than they used to be, \"water-resistant\" absolutely does not mean \"waterproof,\" and understanding this distinction is vital for the longevity of your device.\n\nWater resistance ratings are awarded based on controlled lab tests using fresh, stagnant water. They do not account for the real world. They don\'t account for the pressurized jet of a spilled soda, the corrosive salt in ocean water, or the chlorinated chemicals in a swimming pool. Furthermore, the rubber gaskets and seals inside your phone that keep water out degrade over time due to heat, drops, and general aging. A two-year-old phone is significantly less water-resistant than a brand-new one.\n\nEven if your phone’s seals hold up against a quick splash or a drop in the sink, water often gets trapped in the shallow cavities of the speaker grilles and charging ports. Because of surface tension, water droplets love to cling to these small metal meshes.\n\nWhen water sits on the speaker mesh, it acts like a heavy dampener. The speaker tries to vibrate, but it has to push through a layer of water. The result is audio that sounds incredibly quiet, muffled, or crackly—like your phone is underwater.\n</string>
+    <string name="title_topic_3">The Invisible Blanket: How Dust Muffles Your Life</string>
+    <string name="title_topic_4">The Holistic Routine: Cleaning Inside and Out</string>
+    <string name="title_topic_5">How the \"Water Eject\" Mode Works</string>
+    <string name="topic_3">\nIt happens slowly. You don\'t notice it day by day, but over six months or a year, you find yourself constantly pressing the \"volume up\" button, yet your podcasts still sound distant, and your music lacks punch.\n\nYou might assume your phone’s speakers are just getting old and wearing out. In reality, they are likely just suffocating under a blanket of grime.\n\nYour phone lives a dirty life. It spends hours in pockets filled with lint, at the bottom of handbags filled with crumbs, and resting on dusty tabletops. Every time you put your phone down, microscopic particles of dust, dead skin cells, oils from your hands, and environmental debris find their way towards the speaker intakes.\n\nInitially, this dust is loose. But over time, humidity in the air and the natural oils from your skin act as a binding agent. The fine dust gets pressed into the intricate weave of the speaker mesh, compacting into a dense, felt-like layer.\n\nOur app’s \"Dust Cleaner\" mode creates a sustained, high-frequency vibration pattern designed specifically for this purpose. The intense, rapid vibrations act like a microscopic jackhammer against the compacted dirt layer. It shatters the bonds holding the grime together, turning the solid \"cake\" of lint back into loose powder. Once loosened, the continuous air pressure generated by the sound waves helps push this fine powder out of the grille, allowing your speaker to breathe—and sound crisp—once again.\n</string>
+    <string name="topic_4">\nOur app is almost magical in its ability to clean the parts of your phone you cannot reach—the internal speaker components. By using sound waves, we handle the \"internal medicine\" of phone maintenance.\n\nHowever, a truly clean and hygienic device requires a holistic approach. We can clear your speakers, but we can’t clean the glass you touch hundreds of times a day, nor can we disinfect the surface. Your phone is terrifyingly dirty; studies have shown that the average smartphone carries more bacteria than many toilet seats.\n\nTo keep your device in top condition, both aesthetically and functionally, we recommend a two-part cleaning routine once a week.\n\nPart 1: The Internal Sound Cleanse (The App)\n\nStart with our app. Run a full cycle of the cleaner. We recommend doing this before cleaning the outside of the phone. Why? Because the app is designed to eject debris from the inside out. You want to push all that hidden dust and lint onto the surface before you wipe the surface down. Let the sound waves loosen the grime and push it out of the grilles.\n\nPart 2: The External Surface Cleanse (Manual)\n\nThe Golden Rule: Never use harsh household chemicals like bleach, ammonia-based window cleaners (like Windex), or abrasive paper towels. All you need is a high-quality, soft microfiber cloth. Gently wipe down the screen and the back glass. Pay special attention to the camera lenses to ensure crisp photos. Finally, take a dry corner of the cloth and gently sweep across the speaker grilles to pick up the dust and debris that our app just ejected.\n</string>
+    <string name="topic_5">\nThe technology behind this feature is surprisingly sophisticated. When you hit the button, the app generates a specific, calibrated ultra-low frequency tone.\n\nThis isn\'t just a random loud noise. This specific frequency is designed to push your phone’s speaker driver to its \"maximum safe excursion\" limit. In audio terms, \"excursion\" is the distance the speaker cone travels back and forth. By maximizing this movement, the speaker creates rapid, intense pulses of air pressure.\n\nBreaking the Tension\nIf you hold your phone while the mode is running, you will feel a strong, deep vibration. This vibration is the engine of the cleaning process. Water droplets get trapped in your speaker grille because of surface tension—they naturally want to cling to the metal mesh.\nThe outward air pressure generated by the app is strong enough to break this surface tension. It physically forces the trapped droplets away from the internal components and out through the grille. Once the water is ejected to the exterior surface, you can simply wipe it away with a cloth.\n\nA Crucial Warning\nWhile this is the safest way to clear a splash or rain exposure, know the limits. If your phone was fully submerged deep underwater for an extended period, do not rely solely on an app. Turn the device off immediately and seek professional assistance to ensure internal corrosion hasn\'t begun.\n</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.waterremove.ui.feature.language
 
-
 import android.content.Context
 import androidx.core.app.LocaleManagerCompat
 import androidx.lifecycle.ViewModel
@@ -29,5 +28,11 @@ class LanguageViewModel @Inject constructor(
 
     fun select(language: AppLanguage) {
         _state.update { it.copy(selected = language) }
+    }
+
+    fun preselectCurrent() {
+        if (_state.value.selected != null) return
+        val current = Languages.byCode(currentAppLocaleCode() ?: deviceCode) ?: return
+        _state.update { it.copy(selected = current) }
     }
 }

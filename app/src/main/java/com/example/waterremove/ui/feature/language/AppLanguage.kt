@@ -7,23 +7,21 @@ data class AppLanguage(
     val code: String,
     val englishName: String,
     val nativeName: String,
-    val flag: String,
 )
 
 object Languages {
     val all = listOf(
-        AppLanguage("en", "English", "English", "🇺🇸"),
-        AppLanguage("vi", "Vietnamese", "Tiếng Việt", "🇻🇳"),
-        AppLanguage("hi", "Hindi", "हिन्दी", "🇮🇳"),
-        AppLanguage("es", "Spanish", "Español", "🇪🇸"),
-        AppLanguage("fr", "French", "Français", "🇫🇷"),
-        AppLanguage("pt", "Portuguese", "Português", "🇧🇷"),
-        AppLanguage("de", "German", "Deutsch", "🇩🇪"),
-        AppLanguage("id", "Indonesian", "Bahasa Indonesia", "🇮🇩"),
-        AppLanguage("ja", "Japanese", "日本語", "🇯🇵"),
-        AppLanguage("ko", "Korean", "한국어", "🇰🇷"),
-        AppLanguage("ru", "Russian", "Русский", "🇷🇺"),
-        AppLanguage("ar", "Arabic", "العربية", "🇸🇦"),
+        AppLanguage("en", "English", "English"),
+        AppLanguage("es", "Spanish", "Español"),
+        AppLanguage("fr", "French", "Français"),
+        AppLanguage("pt", "Portuguese", "Português"),
+        AppLanguage("de", "German", "Deutsch"),
+        AppLanguage("hi", "Indian", "हिंदी"),
+        AppLanguage("vi", "Vietnamese", "Tiếng Việt"),
+        AppLanguage("ar", "Arabic", "عربي"),
+        AppLanguage("id", "Indonesian", "Bahasa Indo"),
+        AppLanguage("fil", "Filipino", "Pilipinas"),
+        AppLanguage("ru", "Russian", "Русский язык"),
     )
 
 
@@ -35,15 +33,17 @@ object Languages {
         return listOfNotNull(device, english) + rest
     }
 
-    // Android cũ trả mã ngôn ngữ kiểu cũ: Indonesia = "in", Hebrew = "iw"
+    fun byCode(code: String?): AppLanguage? = code?.let { c -> all.find { it.code == normalize(c) } }
+
     private fun normalize(code: String) = when (code) {
         "in" -> "id"
-        "iw" -> "he"
+        "tl" -> "fil"
         else -> code
     }
 }
 
-
 fun applyAppLocale(code: String) {
     AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(code))
 }
+
+fun currentAppLocaleCode(): String? = AppCompatDelegate.getApplicationLocales()[0]?.language

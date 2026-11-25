@@ -20,6 +20,7 @@ class AppPrefs @Inject constructor(@param:ApplicationContext private val context
         val ONBOARDING_DONE = booleanPreferencesKey("onboarding_done")
         val OPEN_COUNT = intPreferencesKey("open_count")
         val RATED = booleanPreferencesKey("rated")
+        val RATE_SHOWN = booleanPreferencesKey("rate_shown")
         fun tutorialSeen(feature: String) = booleanPreferencesKey("tutorial_seen_$feature")
     }
     private suspend fun prefs() = context.dataStore.data.first()
@@ -42,6 +43,12 @@ class AppPrefs @Inject constructor(@param:ApplicationContext private val context
 
     suspend fun setRated() {
         context.dataStore.edit { it[Keys.RATED] = true }
+    }
+
+    suspend fun isRateShown(): Boolean = prefs()[Keys.RATE_SHOWN] ?: false
+
+    suspend fun setRateShown() {
+        context.dataStore.edit { it[Keys.RATE_SHOWN] = true }
     }
 
     suspend fun isTutorialSeen(feature: String): Boolean = prefs()[Keys.tutorialSeen(feature)] ?: false

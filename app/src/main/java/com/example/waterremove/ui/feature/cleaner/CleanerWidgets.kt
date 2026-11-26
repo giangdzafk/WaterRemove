@@ -34,7 +34,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -47,7 +47,7 @@ import com.example.waterremove.ui.theme.BlueLight
 import com.example.waterremove.ui.theme.BlueSoft
 
 @Composable
-fun StartCircleButton(icon: ImageVector, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun StartCircleButton(icon: Painter, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val pulse by rememberInfiniteTransition(label = "pulse").animateFloat(
         initialValue = 0.96f,
         targetValue = 1.04f,
@@ -122,7 +122,7 @@ fun WetnessCard(level: WetnessLevel, selected: Boolean, onClick: () -> Unit, mod
 }
 
 @Composable
-fun CleaningRing(progress: Float, icon: ImageVector, size: Dp = 200.dp) {
+fun CleaningRing(progress: Float, icon: Painter, size: Dp = 200.dp) {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.size(size)) {
         Canvas(Modifier.fillMaxSize()) {
             val stroke = 6.dp.toPx()

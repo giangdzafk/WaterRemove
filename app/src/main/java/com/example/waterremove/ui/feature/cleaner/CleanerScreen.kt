@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -130,7 +131,7 @@ private fun AutoContent(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(Modifier.height(20.dp))
-        StartCircleButton(icon = AppIcons.Sparkle, onClick = onStart)
+        StartCircleButton(icon = feature.painter(), onClick = onStart)
         Spacer(Modifier.height(16.dp))
         Text(stringResource(feature.modeTitle), fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
         Spacer(Modifier.height(4.dp))
@@ -140,7 +141,6 @@ private fun AutoContent(
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
         )
-
         if (feature == CleanerFeature.WATER) {
             Spacer(Modifier.height(24.dp))
             Text(
@@ -177,19 +177,27 @@ private fun ManualContent(
             .navigationBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(Modifier.height(24.dp))
-        FrequencyDial(hz = state.manualHz, onHzChange = onHzChange)
-        Spacer(Modifier.height(8.dp))
-        Text(
-            stringResource(R.string.drag_to_adjust),
-            fontSize = 13.sp,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.weight(1f))
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Spacer(Modifier.height(24.dp))
+            FrequencyDial(hz = state.manualHz, onHzChange = onHzChange)
+            Spacer(Modifier.height(8.dp))
+            Text(
+                stringResource(R.string.drag_to_adjust),
+                fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(16.dp))
+        }
         if (state.manualPlaying) {
-            SecondaryButton(stringResource(R.string.stop_cleaning), onToggleManual, icon = AppIcons.Sparkle)
+            SecondaryButton(stringResource(R.string.stop_cleaning), onToggleManual, iconPainter = painterResource(R.drawable.cleaner))
         } else {
-            PrimaryButton(stringResource(R.string.start_cleaning), onToggleManual, icon = AppIcons.Sparkle)
+            PrimaryButton(stringResource(R.string.start_cleaning), onToggleManual, iconPainter = painterResource(R.drawable.cleaner))
         }
         Spacer(Modifier.height(16.dp))
     }

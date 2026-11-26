@@ -183,7 +183,6 @@ private fun WaterBanner(onClick: () -> Unit) {
                 .height(160.dp)
                 .background(Brush.linearGradient(listOf(Color(0xFF2E86F5), BlueDark))),
         ) {
-            // Minh hoạ điện thoại + giọt nước ở góc phải trên (lấn nhẹ ra mép, bị card cắt như Figma)
             Image(
                 painter = painterResource(R.drawable.water_removal),
                 contentDescription = null,

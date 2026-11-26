@@ -47,7 +47,6 @@ object Routes {
     fun tip(index: Int) = "tip/$index"
 }
 
-
 @Composable
 fun AppNavHost(navController: NavHostController = rememberNavController()) {
     val back: () -> Unit = { navController.popBackStack() }
@@ -59,7 +58,6 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
     }
 
     NavHost(navController = navController, startDestination = Routes.SPLASH) {
-        // ---------- Luồng mở app ----------
         composable(Routes.SPLASH) {
             SplashScreen(onFinished = { firstOpen ->
                 navController.navigate(if (firstOpen) Routes.LANGUAGE else Routes.HOME) {
@@ -82,12 +80,12 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
         composable(Routes.WELCOME) {
             WelcomeScreen(onGetStarted = {
                 navController.navigate(Routes.HOME) {
-                    popUpTo(0) { inclusive = true } // xoá toàn bộ luồng onboarding khỏi back stack
+                    popUpTo(0) { inclusive = true }
                 }
             })
         }
 
-        // ---------- Home ----------
+        // Home
         composable(Routes.HOME) {
             HomeScreen(
                 onWater = { navController.navigate(Routes.cleaner(CleanerFeature.WATER)) },
@@ -151,12 +149,12 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
             TutorialScreen(featureKey = entry.arguments?.getString("feature") ?: "water", onBack = back)
         }
 
-        // ---------- Sound test ----------
+        // Sound test
         composable(Routes.SOUND_TEST) {
             SoundTestScreen(onBack = back, onOpenGuide = { navController.navigate(Routes.tutorial("sound")) })
         }
 
-        // ---------- Setting ----------
+        // Setting
         composable(Routes.SETTINGS) {
             SettingsScreen(onBack = back, onLanguage = { navController.navigate(Routes.LANGUAGE_SETTINGS) })
         }

@@ -55,7 +55,6 @@ fun WelcomeScreen(
     WelcomeContent(onGetStartedClick = { vm.finishOnboarding(onDone = onGetStarted) })
 }
 
-/** Nền xanh navy, ảnh điện thoại toé nước, "WELCOME!", nút trắng "Get Started". */
 @Composable
 fun WelcomeContent(onGetStartedClick: () -> Unit) {
     Column(
@@ -64,7 +63,6 @@ fun WelcomeContent(onGetStartedClick: () -> Unit) {
             .background(WelcomeBottom),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        // Ảnh full chiều ngang, tràn lên status bar (mép trên ảnh cùng màu navy đậm)
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -121,7 +119,6 @@ fun WelcomeContent(onGetStartedClick: () -> Unit) {
     }
 }
 
-/** Màu nền lấy theo mép dưới ảnh welcome_phone để ảnh và nền liền nhau. */
 private val WelcomeBottom = Color(0xFF1A3051)
 
 @Preview(showSystemUi = true)

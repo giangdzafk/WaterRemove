@@ -82,7 +82,6 @@ fun SoundTestScreen(
         onSpeakerClick = vm::toggleSpeaker,
     )
 }
-
 @Composable
 fun SoundTestContent(
     state: SoundTestUiState,
@@ -245,7 +244,6 @@ private fun StereoTab(state: SoundTestUiState, onStereoClick: () -> Unit, onSpea
     }
 }
 
-/** Hình loa tròn: xanh có sóng khi On, xám khi Off. Bấm để bật/tắt (khi đang test). */
 @Composable
 private fun SpeakerView(label: String, on: Boolean, onClick: () -> Unit) {
     val main = if (on) Blue else Gray400

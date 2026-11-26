@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.waterremove.core.audio.TonePlayer
+import com.example.waterremove.core.audio.VolumeBooster
 import com.example.waterremove.core.data.AppPrefs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,8 +31,8 @@ class CleanerViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val player: TonePlayer,
     private val prefs: AppPrefs,
+    private val volume: VolumeBooster,
 ) : ViewModel() {
-
     val feature = CleanerFeature.fromKey(savedStateHandle.get<String>("feature"))
 
     private val _state = MutableStateFlow(CleanerUiState())
@@ -40,7 +41,6 @@ class CleanerViewModel @Inject constructor(
     private var manualToken: Int? = null
 
     init {
-        // Lần đầu vào tính năng: hiện gợi ý bấm vào icon guide
         viewModelScope.launch {
             if (!prefs.isTutorialSeen(feature.key)) _state.update { it.copy(showGuideHint = true) }
         }
@@ -67,13 +67,17 @@ class CleanerViewModel @Inject constructor(
         if (_state.value.manualPlaying) {
             stopManual()
         } else {
+            volume.boost()
             manualToken = player.playContinuous(_state.value.manualHz)
             _state.update { it.copy(manualPlaying = true) }
         }
     }
 
     fun stopManual() {
-        manualToken?.let { player.stop(it) }
+        manualToken?.let {
+            player.stop(it)
+            volume.restore()
+        }
         manualToken = null
         _state.update { it.copy(manualPlaying = false) }
     }

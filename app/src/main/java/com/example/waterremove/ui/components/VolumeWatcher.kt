@@ -36,7 +36,7 @@ fun Context.mediaVolumePercent(): Int {
 }
 
 @Composable
-fun VolumeWatcher(modifier: Modifier = Modifier) {
+fun VolumeWatcher(modifier: Modifier = Modifier, showLowVolumeTip: Boolean = true) {
     val context = LocalContext.current
     val offMessage = stringResource(R.string.toast_volume_off)
     var percent by remember { mutableIntStateOf(context.mediaVolumePercent()) }
@@ -52,7 +52,7 @@ fun VolumeWatcher(modifier: Modifier = Modifier) {
         }
     }
 
-    AnimatedVisibility(visible = percent in 1 until 50, modifier = modifier) {
+    AnimatedVisibility(visible = showLowVolumeTip && percent in 1 until 50, modifier = modifier) {
         Surface(
             shape = RoundedCornerShape(12.dp),
             color = MaterialTheme.colorScheme.primaryContainer,

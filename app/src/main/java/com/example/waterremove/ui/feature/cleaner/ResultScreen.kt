@@ -2,6 +2,8 @@ package com.example.waterremove.ui.feature.cleaner
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -57,6 +60,7 @@ fun ResultScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface)
             .statusBarsPadding()
+            .verticalScroll(rememberScrollState())
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -118,7 +122,7 @@ fun ResultScreen(
             fontWeight = FontWeight.SemiBold,
         )
         Spacer(Modifier.height(20.dp))
-        PrimaryButton(stringResource(R.string.clean_again), onCleanAgain, icon = AppIcons.Sparkle)
+        PrimaryButton(stringResource(R.string.clean_again), onCleanAgain, iconPainter = painterResource(R.drawable.cleaner))
         TextButton(onClick = onTestSpeaker) {
             Text(stringResource(R.string.test_speaker), color = Blue)
         }

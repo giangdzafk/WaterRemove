@@ -64,7 +64,6 @@ fun SplashScreen(
     SplashContent(progress = { progress.value })
 }
 
-/** Nửa trên trắng có logo + tên app, nửa dưới là sóng xanh chứa thanh loading (theo Figma). */
 @Composable
 fun SplashContent(progress: () -> Float) {
     Box(
@@ -72,7 +71,6 @@ fun SplashContent(progress: () -> Float) {
             .fillMaxSize()
             .background(Color.White),
     ) {
-        // Sóng xanh phía dưới
         Canvas(
             modifier = Modifier
                 .fillMaxWidth()

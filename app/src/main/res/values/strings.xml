@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Water Remove</string>
+    <string name="app_name">Clean My Speaker</string>
 
     <!--  Chung  -->
     <string name="action_next">Next</string>
@@ -68,6 +68,8 @@
     <string name="do_not_exit">Do not exit this screen while your speaker is being cleaned</string>
     <string name="percent_value">%1$d%%</string>
     <string name="cleaning">Cleaning…</string>
+    <string name="tip">Tip</string>
+    <string name="tip_volume_max">Your volume should be at maximum in order to eject all the water out</string>
     <string name="stop_dialog_title">Stop cleaning?</string>
     <string name="stop_dialog_desc">Your phone is being cleaned, do you want to stop the process?</string>
     <string name="action_stop">Stop</string>

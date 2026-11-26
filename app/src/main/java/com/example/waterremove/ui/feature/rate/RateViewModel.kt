@@ -18,6 +18,13 @@ class RateViewModel @Inject constructor(
     private val _visible = MutableStateFlow(false)
     val visible: StateFlow<Boolean> = _visible.asStateFlow()
 
+    private val _rated = MutableStateFlow(false)
+    val rated: StateFlow<Boolean> = _rated.asStateFlow()
+
+    init {
+        viewModelScope.launch { _rated.value = prefs.isRated() }
+    }
+
     fun autoShowIfNeeded() {
         viewModelScope.launch {
             if (prefs.openCount() >= 2 && !prefs.isRated() && !prefs.isRateShown()) {
@@ -36,6 +43,7 @@ class RateViewModel @Inject constructor(
     }
 
     fun markRated() {
+        _rated.value = true
         viewModelScope.launch { prefs.setRated() }
     }
 }

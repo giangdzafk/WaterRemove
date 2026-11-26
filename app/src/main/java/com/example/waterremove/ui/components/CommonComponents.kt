@@ -34,7 +34,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -45,15 +47,11 @@ import com.example.waterremove.R
 import com.example.waterremove.ui.theme.Gray200
 import com.example.waterremove.ui.theme.WaterRemoveTheme
 
-/** Toast.LENGTH_SHORT ≈ 2 giây — đúng yêu cầu "show toast trong 2s". */
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-/**
- * Thanh tiêu đề: nút back (tuỳ chọn) + tiêu đề + nút hành động bên phải (tuỳ chọn).
- * Cao 56dp, đã cộng padding status bar.
- */
+
 @Composable
 fun AppTopBar(
     title: String,
@@ -85,7 +83,6 @@ fun AppTopBar(
     }
 }
 
-/** Card có thể chọn (list ngôn ngữ, mức độ ướt…). */
 @Composable
 fun SelectableCard(
     selected: Boolean,
@@ -113,11 +110,7 @@ fun SelectableCard(
     }
 }
 
-/**
- * Button chính (dài full chiều ngang, bo tròn).
- * Khi [looksEnabled] = false button chỉ *trông* như disable nhưng vẫn nhận click
- * → màn hình gọi có thể hiện toast nhắc user.
- */
+
 @Composable
 fun PrimaryButton(
     text: String,
@@ -125,6 +118,7 @@ fun PrimaryButton(
     modifier: Modifier = Modifier,
     looksEnabled: Boolean = true,
     icon: ImageVector? = null,
+    iconPainter: Painter? = null,
 ) {
     Button(
         onClick = onClick,
@@ -137,21 +131,22 @@ fun PrimaryButton(
             contentColor = if (looksEnabled) Color.White else MaterialTheme.colorScheme.outline,
         ),
     ) {
-        if (icon != null) {
-            Icon(icon, null, Modifier.size(18.dp))
+        val iconContent = iconPainter ?: icon?.let { rememberVectorPainter(it) }
+        if (iconContent != null) {
+            Icon(iconContent, null, Modifier.size(18.dp))
             Spacer(Modifier.width(8.dp))
         }
         Text(text, fontWeight = FontWeight.SemiBold)
     }
 }
 
-/** Button xám (Stop cleaning, Stop…). */
 @Composable
 fun SecondaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
+    iconPainter: Painter? = null,
 ) {
     Button(
         onClick = onClick,
@@ -164,15 +159,15 @@ fun SecondaryButton(
             contentColor = MaterialTheme.colorScheme.primary,
         ),
     ) {
-        if (icon != null) {
-            Icon(icon, null, Modifier.size(18.dp))
+        val iconContent = iconPainter ?: icon?.let { rememberVectorPainter(it) }
+        if (iconContent != null) {
+            Icon(iconContent, null, Modifier.size(18.dp))
             Spacer(Modifier.width(8.dp))
         }
         Text(text, fontWeight = FontWeight.SemiBold)
     }
 }
 
-/** Thanh chọn 2 tab dạng viên thuốc (Auto/Manual, Frequency/Stereo). */
 @Composable
 fun SegmentedTabs(
     options: List<String>,

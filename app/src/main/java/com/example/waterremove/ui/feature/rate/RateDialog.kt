@@ -56,7 +56,6 @@ import com.example.waterremove.ui.theme.Gray400
 import com.example.waterremove.ui.theme.Star
 import com.example.waterremove.ui.theme.WaterRemoveTheme
 
-/** Mở trang app trên Google Play (fallback sang trình duyệt nếu máy không có Play Store). */
 fun Context.openPlayStore() {
     try {
         startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri()))
@@ -65,12 +64,7 @@ fun Context.openPlayStore() {
     }
 }
 
-/**
- * Kịch bản Rate:
- * - 4–5 sao → mở Google Play để đánh giá.
- * - 1–3 sao → chuyển sang dialog Feedback.
- * [onRated] được gọi khi user đã hoàn tất (đi Play Store hoặc gửi feedback).
- */
+
 @Composable
 fun RateFlow(onDismiss: () -> Unit, onRated: () -> Unit) {
     val context = LocalContext.current
@@ -90,9 +84,9 @@ fun RateFlow(onDismiss: () -> Unit, onRated: () -> Unit) {
         RateDialog(
             onDismiss = onDismiss,
             onRate = { stars ->
+                onRated() // đã chọn sao và bấm Rate now → tính là đã rate, dù mấy sao
                 if (stars >= 4) {
                     context.openPlayStore()
-                    onRated()
                     onDismiss()
                 } else {
                     showFeedback = true

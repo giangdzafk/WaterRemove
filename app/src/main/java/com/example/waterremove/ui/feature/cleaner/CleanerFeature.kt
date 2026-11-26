@@ -1,7 +1,11 @@
 package com.example.waterremove.ui.feature.cleaner
 
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.painterResource
 import com.example.waterremove.R
 import com.example.waterremove.core.audio.ToneSegment
 import com.example.waterremove.core.audio.TonePrograms
@@ -27,6 +31,12 @@ enum class CleanerFeature(
     fun program(level: Int): List<ToneSegment> = when (this) {
         WATER -> WetnessLevel.entries[level.coerceIn(0, WetnessLevel.entries.lastIndex)].program
         DUST -> TonePrograms.dust
+    }
+
+    @Composable
+    fun painter(): Painter = when (this) {
+        WATER -> painterResource(R.drawable.cleaner)
+        DUST -> rememberVectorPainter(AppIcons.Dust)
     }
 
     companion object {

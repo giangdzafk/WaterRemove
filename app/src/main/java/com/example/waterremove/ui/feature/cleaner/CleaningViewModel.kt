@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.waterremove.core.audio.TonePlayer
 import com.example.waterremove.core.audio.TonePrograms.totalSeconds
+import com.example.waterremove.core.audio.VolumeBooster
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -19,6 +20,7 @@ import javax.inject.Inject
 class CleaningViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val player: TonePlayer,
+    private val volume: VolumeBooster,
 ) : ViewModel() {
 
     val feature = CleanerFeature.fromKey(savedStateHandle.get<String>("feature"))
@@ -34,16 +36,24 @@ class CleaningViewModel @Inject constructor(
     private val _result = MutableStateFlow<Int?>(null)
     val result: StateFlow<Int?> = _result.asStateFlow()
 
-    private val token: Int = player.playProgram(program) { _result.value = 100 }
+    private val token: Int = run {
+        volume.boost()
+        player.playProgram(program) {
+            volume.restore()
+            _result.value = 100
+        }
+    }
 
     fun stop() {
         if (_result.value != null) return
         val percent = (progress.value * 100).toInt().coerceAtMost(99)
         player.stop(token)
+        volume.restore()
         _result.value = percent
     }
 
     override fun onCleared() {
         player.stop(token)
+        volume.restore()
     }
 }

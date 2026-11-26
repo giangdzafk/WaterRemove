@@ -39,8 +39,7 @@ import com.example.waterremove.ui.feature.rate.RateViewModel
 import com.example.waterremove.ui.theme.Blue
 import com.example.waterremove.ui.theme.WaterRemoveTheme
 
-// TODO: thay bằng link chính sách bảo mật thật trước khi phát hành
-private const val PRIVACY_POLICY_URL = "https://sites.google.com/view/water-remove-privacy"
+private const val PRIVACY_POLICY_URL = "https://moranjiyoungestudiokr.web.app/privacy-policy"
 
 @Composable
 fun SettingsScreen(
@@ -50,11 +49,13 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
     val showRate by rateVm.visible.collectAsStateWithLifecycle()
+    val rated by rateVm.rated.collectAsStateWithLifecycle()
     val appName = stringResource(R.string.app_name)
 
     SettingsContent(
         onBack = onBack,
         onLanguage = onLanguage,
+        showRateRow = !rated,
         onRate = rateVm::show,
         onShare = { context.shareApp(appName) },
         onPrivacy = { context.openUrl(PRIVACY_POLICY_URL) },
@@ -67,6 +68,7 @@ fun SettingsScreen(
 fun SettingsContent(
     onBack: () -> Unit,
     onLanguage: () -> Unit,
+    showRateRow: Boolean,
     onRate: () -> Unit,
     onShare: () -> Unit,
     onPrivacy: () -> Unit,
@@ -78,7 +80,8 @@ fun SettingsContent(
     ) {
         AppTopBar(title = stringResource(R.string.settings), onBack = onBack)
         SettingRow(AppIcons.Globe, stringResource(R.string.language_title), onLanguage)
-        SettingRow(Icons.Outlined.Star, stringResource(R.string.rate_this_app), onRate)
+
+        if (showRateRow) SettingRow(Icons.Outlined.Star, stringResource(R.string.rate_this_app), onRate)
         SettingRow(Icons.Outlined.Share, stringResource(R.string.share_us), onShare)
         SettingRow(AppIcons.Shield, stringResource(R.string.privacy_policy), onPrivacy)
     }
@@ -114,12 +117,11 @@ private fun Context.openUrl(url: String) {
     try {
         startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
     } catch (_: ActivityNotFoundException) {
-        // Máy không có trình duyệt — bỏ qua
     }
 }
 
 @Preview(showSystemUi = true)
 @Composable
 private fun SettingsPreview() {
-    WaterRemoveTheme { SettingsContent({}, {}, {}, {}, {}) }
+    WaterRemoveTheme { SettingsContent(onBack = {}, onLanguage = {}, showRateRow = true, onRate = {}, onShare = {}, onPrivacy = {}) }
 }

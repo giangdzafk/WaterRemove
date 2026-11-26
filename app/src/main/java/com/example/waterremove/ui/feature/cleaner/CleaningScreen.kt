@@ -2,6 +2,10 @@ package com.example.waterremove.ui.feature.cleaner
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +34,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -40,7 +46,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.waterremove.R
-import com.example.waterremove.ui.components.AppIcons
 import com.example.waterremove.ui.components.SecondaryButton
 import com.example.waterremove.ui.components.VolumeWatcher
 import com.example.waterremove.ui.theme.Blue
@@ -64,7 +69,7 @@ fun CleaningScreen(
     BackHandler { showStopDialog = true }
 
     CleaningContent(
-        icon = vm.feature.icon,
+        icon = vm.feature.painter(),
         progress = progress,
         onStopClick = { showStopDialog = true },
     )
@@ -78,17 +83,21 @@ fun CleaningScreen(
 }
 
 @Composable
-fun CleaningContent(icon: androidx.compose.ui.graphics.vector.ImageVector, progress: Float, onStopClick: () -> Unit) {
+fun CleaningContent(icon: Painter, progress: Float, onStopClick: () -> Unit) {
+    // Theo Figma "UI Update 30/12/2025": nội dung xếp từ trên xuống, có card Tip,
+    // nút Stop ngay dưới Tip. Cho phép cuộn để màn hình nhỏ không bị che (List bug #8).
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface)
             .systemBarsPadding()
+            .verticalScroll(rememberScrollState())
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        VolumeWatcher(Modifier.padding(top = 8.dp))
-        Spacer(Modifier.weight(0.6f))
+        // Chỉ dùng để toast khi user tắt tiếng; tip âm lượng đã có card riêng bên dưới
+        VolumeWatcher(showLowVolumeTip = false)
+        Spacer(Modifier.height(40.dp))
         Text(stringResource(R.string.clean_speaker), fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
         Spacer(Modifier.height(6.dp))
         Text(
@@ -107,9 +116,36 @@ fun CleaningContent(icon: androidx.compose.ui.graphics.vector.ImageVector, progr
         )
         Spacer(Modifier.height(6.dp))
         Text(stringResource(R.string.cleaning), fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
-        Spacer(Modifier.weight(1f))
+        Spacer(Modifier.height(24.dp))
+        TipCard()
+        Spacer(Modifier.height(16.dp))
         SecondaryButton(stringResource(R.string.stop_cleaning), onStopClick)
         Spacer(Modifier.height(16.dp))
+    }
+}
+
+/** Card "Tip: Your volume should be at maximum…" (Figma UI Update). */
+@Composable
+private fun TipCard() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(BlueLight, RoundedCornerShape(10.dp))
+            .padding(12.dp),
+    ) {
+        Icon(
+            Icons.Outlined.Info, null,
+            tint = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.size(18.dp),
+        )
+        Column(Modifier.padding(start = 8.dp)) {
+            Text(stringResource(R.string.tip), fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text(
+                stringResource(R.string.tip_volume_max),
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
     }
 }
 
@@ -127,7 +163,7 @@ fun StopCleaningDialog(onStop: () -> Unit, onContinue: () -> Unit) {
                         .background(BlueLight, RoundedCornerShape(16.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Icon(AppIcons.Sparkle, null, tint = Blue, modifier = Modifier.size(32.dp))
+                    Icon(painterResource(R.drawable.cleaner), null, tint = Blue, modifier = Modifier.size(32.dp))
                 }
                 Spacer(Modifier.height(12.dp))
                 Text(stringResource(R.string.stop_dialog_title), fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
@@ -160,7 +196,7 @@ fun StopCleaningDialog(onStop: () -> Unit, onContinue: () -> Unit) {
 @Preview(showSystemUi = true)
 @Composable
 private fun CleaningPreview() {
-    WaterRemoveTheme { CleaningContent(AppIcons.Sparkle, 0.5f) {} }
+    WaterRemoveTheme { CleaningContent(painterResource(R.drawable.cleaner), 0.5f) {} }
 }
 
 @Preview(showBackground = true)
